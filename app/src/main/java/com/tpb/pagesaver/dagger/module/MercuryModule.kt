@@ -5,6 +5,7 @@ import android.content.Context
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.tpb.pagesaver.BuildConfig
 import com.tpb.pagesaver.data.network.MercuryService
 import dagger.Module
 import dagger.Provides
@@ -45,6 +46,11 @@ class MercuryModule(val context: Context, val baseURL: String) {
     fun provideOkHttpClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
                 .cache(cache)
+                .addInterceptor { chain ->
+                    chain.proceed(chain.request().newBuilder()
+                            .header("x-api-key", BuildConfig.MERCURY_API_KEY)
+                            .build())
+                }
                 .build()
     }
 
