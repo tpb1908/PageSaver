@@ -1,7 +1,6 @@
 package com.tpb.pagesaver.dagger.module
 
 import android.app.Application
-import android.content.Context
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -20,12 +19,12 @@ import javax.inject.Singleton
  * Created by theo on 29/08/17.
  */
 @Module
-class MercuryModule(val context: Context, val baseURL: String) {
+class MercuryModule(val application: Application, val baseURL: String) {
 
 
     @Provides
     @Singleton
-    fun provideHttpCache(application: Application): Cache {
+    fun provideHttpCache(): Cache {
         return Cache(application.cacheDir, (10 * 1024 * 1024).toLong())
     }
 

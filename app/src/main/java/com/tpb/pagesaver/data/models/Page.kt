@@ -12,8 +12,8 @@ import io.mironov.smuggler.AutoParcelable
 
 @SuppressLint("ParcelCreator")
 @Entity(tableName = "page") data class Page(
-        @SerializedName("id") @PrimaryKey val id: Long,
-        @SerializedName("time") val time: Long,
+        @SerializedName("id") @PrimaryKey(autoGenerate = true) val id: Long,
+        @SerializedName("time") val time: Long = System.currentTimeMillis(),
         @SerializedName("title") val title: String,
         @SerializedName("content") val content: String,
         @SerializedName("pdate") val published: String,

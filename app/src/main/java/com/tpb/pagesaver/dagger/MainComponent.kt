@@ -3,6 +3,7 @@ package com.tpb.pagesaver.dagger
 import com.tpb.pagesaver.dagger.module.DBModule
 import com.tpb.pagesaver.dagger.module.MercuryModule
 import com.tpb.pagesaver.main.MainActivity
+import com.tpb.pagesaver.views.PageSaveActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,5 +15,7 @@ import javax.inject.Singleton
 interface MainComponent {
 
     fun inject(activity: MainActivity)
+
+    fun inject(activity: PageSaveActivity)
 
 }

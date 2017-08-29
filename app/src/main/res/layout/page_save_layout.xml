@@ -1,13 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    android:gravity="center">
 
     <ProgressBar
         android:id="@+id/downloadProgress"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
-</RelativeLayout>
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/completeInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/pageDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pageTitle"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material.Notification.Time"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            tools:text="Date"/>
+
+        <TextView
+            android:id="@+id/pageExcerpt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pageDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            tools:text="Excerpt...Word_count"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pageExcerpt"
+            style="?android:attr/buttonBarStyle">
+
+            <Button
+                android:id="@+id/showButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_view"
+                style="?android:attr/buttonBarPositiveButtonStyle"/>
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_delete"
+                style="?android:attr/buttonBarNegativeButtonStyle"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

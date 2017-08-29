@@ -8,3 +8,4 @@
 /captures
 .externalNativeBuild
 /config.gradle
+/app/config.gradle
