@@ -6,7 +6,7 @@
               android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/pages_recycler"
+        android:id="@+id/pagesRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/page_list_viewholder">

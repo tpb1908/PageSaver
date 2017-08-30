@@ -1,5 +1,6 @@
 package com.tpb.pagesaver.presenters.save
 
+import com.tpb.pagesaver.data.models.Page
 import com.tpb.pagesaver.presenters.PresenterContract
 
 /**
@@ -7,6 +8,7 @@ import com.tpb.pagesaver.presenters.PresenterContract
  */
 interface SavePresenterContract : PresenterContract {
 
+    fun providePage(): Page?
 
     fun handleShow()
 

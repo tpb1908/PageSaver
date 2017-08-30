@@ -14,6 +14,7 @@ import com.tpb.pagesaver.data.network.MercuryService
 import com.tpb.pagesaver.presenters.save.SavePresenter
 import com.tpb.pagesaver.presenters.save.SaveViewContract
 import com.tpb.pagesaver.util.AlertDialogCallback
+import com.tpb.pagesaver.util.Keys
 import com.tpb.pagesaver.util.Util
 import kotlinx.android.synthetic.main.page_save_layout.*
 import javax.inject.Inject
@@ -49,7 +50,11 @@ class PageSaveActivity: AppCompatActivity(), SaveViewContract {
                     .show()
         }
         showButton.setOnClickListener {
-            startActivity(Intent(this, PageShowActivity::class.java))
+            val intent = Intent(this, PageShowActivity::class.java)
+            if (presenter.providePage() != null) {
+                intent.putExtra(Keys.INTENT_PAGE_ID, presenter.providePage()?.id)
+                startActivity(intent)
+            }
         }
 
     }
@@ -63,6 +68,7 @@ class PageSaveActivity: AppCompatActivity(), SaveViewContract {
     }
 
     override fun showPageComplete(page: Page) {
+        setFinishOnTouchOutside(true)
         completeInfo.visibility = View.VISIBLE
         if (page.published != null) {
             pageDate.text = Util.formatLocally(Util.ISO8061ToDate(page.published))
@@ -83,8 +89,8 @@ class PageSaveActivity: AppCompatActivity(), SaveViewContract {
                             pages.size,
                             DateUtils.getRelativeTimeSpanString(pages.first().time))
                     )
-                    .setPositiveButton(R.string.action_merge, {di, i -> listener.onPositive()})
-                    .setNegativeButton(R.string.action_duplicate, {di, i -> listener.onNegative()})
+                    .setPositiveButton(R.string.action_merge, {_, _ -> listener.onPositive()})
+                    .setNegativeButton(R.string.action_duplicate, {_, _ -> listener.onNegative()})
                     .show()
         }
     }

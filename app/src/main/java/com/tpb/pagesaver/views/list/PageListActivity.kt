@@ -28,8 +28,8 @@ class PageListActivity : AppCompatActivity(), ListViewContract, ListClickHandler
         setContentView(R.layout.page_list_layout)
         (application as App).mainComponent.inject(this)
 
-        pages_recycler.layoutManager = LinearLayoutManager(this)
-        pages_recycler.adapter = adapter
+        pagesRecycler.layoutManager = LinearLayoutManager(this)
+        pagesRecycler.adapter = adapter
 
         presenter.attachView(this)
     }

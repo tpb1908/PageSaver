@@ -7,7 +7,7 @@ import com.tpb.pagesaver.App
 import com.tpb.pagesaver.R
 import com.tpb.pagesaver.presenters.show.ShowPresenter
 import com.tpb.pagesaver.presenters.show.ShowViewContract
-import kotlinx.android.synthetic.main.page_view_layout.*
+import kotlinx.android.synthetic.main.page_show_layout.*
 import javax.inject.Inject
 
 /**
@@ -23,7 +23,7 @@ class PageShowActivity : AppCompatActivity(), ShowViewContract {
 //        src: url("file:///android_asset/%1${'$'}s")}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.page_view_layout)
+        setContentView(R.layout.page_show_layout)
 
         (application as App).mainComponent.inject(this)
 
@@ -36,6 +36,9 @@ class PageShowActivity : AppCompatActivity(), ShowViewContract {
             cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             setAppCacheMaxSize(1024*1024*100)
         }
+
+        supportActionBar?.hide()
+        //setSupportActionBar(toolbar)
 
         presenter.attachView(this)
         presenter.handleIntent(intent)

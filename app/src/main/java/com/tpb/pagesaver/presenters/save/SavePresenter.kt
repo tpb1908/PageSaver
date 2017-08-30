@@ -71,6 +71,10 @@ class SavePresenter @Inject constructor(private val mercury: MercuryService, pri
         }
     }
 
+    override fun providePage(): Page? {
+        return page
+    }
+
     override fun handleShow() {
 
     }
