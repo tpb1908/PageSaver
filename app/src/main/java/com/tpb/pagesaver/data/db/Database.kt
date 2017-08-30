@@ -8,7 +8,7 @@ import com.tpb.pagesaver.data.models.Page
  * Created by theo on 29/08/17.
  */
 
-@Database(entities = arrayOf(Page::class), version = 1)
+@Database(entities = arrayOf(Page::class), version = 2)
 
 abstract class Database : RoomDatabase() {
 

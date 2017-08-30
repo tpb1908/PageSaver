@@ -56,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pageExcerpt"
-            style="?android:attr/buttonBarStyle">
+            style="?android:attr/buttonBarStyle"
+            android:gravity="end">
 
             <Button
                 android:id="@+id/showButton"

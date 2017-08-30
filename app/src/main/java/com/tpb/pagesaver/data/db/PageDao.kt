@@ -17,10 +17,19 @@ interface PageDao {
     @Query("SELECT * FROM page WHERE id = :id LIMIT 1")
     fun getById(id: Long): Flowable<List<Page>>
 
+    @Query("SELECT * FROM page WHERE url = :url")
+    fun listPreviousSaves(url: String): List<Page>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPage(page: Page)
+    fun insertPage(page: Page): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updatePage(page: Page)
+
+    @Delete
+    fun deletePage(page: Page)
+
+    @Delete
+    fun deletePages(pages: Collection<Page>)
 
 }

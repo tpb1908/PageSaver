@@ -1,18 +1,15 @@
 package com.tpb.pagesaver.presenters.save
 
-import android.content.Intent
+import com.tpb.pagesaver.presenters.PresenterContract
 
 /**
  * Created by theo on 29/08/17.
  */
-interface SavePresenterContract {
+interface SavePresenterContract : PresenterContract {
 
-    fun handleIntent(intent: Intent)
 
     fun handleShow()
 
     fun handleDelete()
-
-    fun handleBackPress()
 
 }

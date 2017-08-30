@@ -3,4 +3,14 @@
     <string name="action_view">View</string>
     <string name="action_delete">Delete</string>
 
+    <string name="confirm_delete">Delete saved page?</string>
+
+    <string name="title_duplicates_found">Duplicates found</string>
+    <plurals name="message_merge_duplicates">
+        <item quantity="one">There is %1$d duplicate item from %2$s.</item>
+        <item quantity="other">There are %1$d items from %2$s.</item>
+    </plurals>
+    <string name="action_merge">Merge</string>
+    <string name="action_save">Save</string>
+
 </resources>

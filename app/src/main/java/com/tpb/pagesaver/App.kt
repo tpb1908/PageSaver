@@ -1,8 +1,8 @@
 package com.tpb.pagesaver
 
 import android.app.Application
-import com.tpb.pagesaver.dagger.DaggerMainComponent
-import com.tpb.pagesaver.dagger.MainComponent
+import com.tpb.pagesaver.dagger.component.DaggerMainComponent
+import com.tpb.pagesaver.dagger.component.MainComponent
 import com.tpb.pagesaver.dagger.module.DBModule
 import com.tpb.pagesaver.dagger.module.MercuryModule
 

@@ -1,6 +1,7 @@
 package com.tpb.pagesaver.data.models
 
 import android.annotation.SuppressLint
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -12,14 +13,16 @@ import io.mironov.smuggler.AutoParcelable
 
 @SuppressLint("ParcelCreator")
 @Entity(tableName = "page") data class Page(
-        @SerializedName("id") @PrimaryKey(autoGenerate = true) val id: Long,
-        @SerializedName("time") val time: Long = System.currentTimeMillis(),
-        @SerializedName("title") val title: String,
-        @SerializedName("content") val content: String,
-        @SerializedName("pdate") val published: String,
-        @SerializedName("image_url") val imageURL: String,
-        @SerializedName("dek") val dek: String,
-        @SerializedName("url") val url: String,
-        @SerializedName("domain") val domain: String,
-        @SerializedName("excerpt") val excerpt: String,
-        @SerializedName("word_count") val wordCount: Long) : AutoParcelable
+        @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) val id: Long,
+        @ColumnInfo(name = "time") val time: Long,
+        @SerializedName("title") @ColumnInfo(name = "title") val title: String?,
+        @SerializedName("content") @ColumnInfo(name = "content") val content: String?,
+        @SerializedName("date_published") @ColumnInfo(name = "published_date") val published: String?,
+        @SerializedName("lead_image_url") @ColumnInfo(name = "image_url") val imageURL: String?,
+        @SerializedName("dek") @ColumnInfo(name = "dek") val dek: String?,
+        @SerializedName("url") @ColumnInfo(name = "url") val url: String,
+        @SerializedName("domain") @ColumnInfo(name = "domain") val domain: String,
+        @SerializedName("excerpt") @ColumnInfo(name = "excerpt") val excerpt: String?,
+        @SerializedName("word_count") @ColumnInfo(name = "word_count") val wordCount: Long) : AutoParcelable {
+
+}
