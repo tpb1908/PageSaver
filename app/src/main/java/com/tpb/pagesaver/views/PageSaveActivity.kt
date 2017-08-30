@@ -84,7 +84,7 @@ class PageSaveActivity: AppCompatActivity(), SaveViewContract {
                             DateUtils.getRelativeTimeSpanString(pages.first().time))
                     )
                     .setPositiveButton(R.string.action_merge, {di, i -> listener.onPositive()})
-                    .setNegativeButton(R.string.action_save, {di, i -> listener.onNegative()})
+                    .setNegativeButton(R.string.action_duplicate, {di, i -> listener.onNegative()})
                     .show()
         }
     }

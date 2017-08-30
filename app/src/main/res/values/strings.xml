@@ -11,6 +11,7 @@
         <item quantity="other">There are %1$d items from %2$s.</item>
     </plurals>
     <string name="action_merge">Merge</string>
-    <string name="action_save">Save</string>
+    <string name="action_duplicate">Duplicate</string>
+
 
 </resources>

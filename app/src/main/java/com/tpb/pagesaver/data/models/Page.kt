@@ -25,4 +25,11 @@ import io.mironov.smuggler.AutoParcelable
         @SerializedName("excerpt") @ColumnInfo(name = "excerpt") val excerpt: String?,
         @SerializedName("word_count") @ColumnInfo(name = "word_count") val wordCount: Long) : AutoParcelable {
 
+    override fun equals(other: Any?): Boolean {
+        return other is Page && other.id == id
+    }
+
+    override fun hashCode(): Int {
+        return id.toInt()
+    }
 }

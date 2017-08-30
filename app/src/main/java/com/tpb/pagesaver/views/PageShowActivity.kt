@@ -2,6 +2,7 @@ package com.tpb.pagesaver.views
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.webkit.WebSettings
 import com.tpb.pagesaver.App
 import com.tpb.pagesaver.R
 import com.tpb.pagesaver.presenters.show.ShowPresenter
@@ -27,8 +28,17 @@ class PageShowActivity : AppCompatActivity(), ShowViewContract {
         (application as App).mainComponent.inject(this)
 
         //pageWebView.settings.javaScriptEnabled = true
+        pageWebView.settings.apply {
+            domStorageEnabled = true
+            setAppCachePath(cacheDir.absolutePath)
+            allowFileAccess = true
+            setAppCacheEnabled(true)
+            cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+            setAppCacheMaxSize(1024*1024*100)
+        }
 
         presenter.attachView(this)
+        presenter.handleIntent(intent)
 
     }
 

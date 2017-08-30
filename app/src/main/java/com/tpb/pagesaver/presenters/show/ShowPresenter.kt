@@ -3,6 +3,7 @@ package com.tpb.pagesaver.presenters.show
 import android.content.Intent
 import com.tpb.pagesaver.data.db.PageDao
 import com.tpb.pagesaver.presenters.Presenter
+import com.tpb.pagesaver.util.Keys
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
@@ -37,16 +38,18 @@ class ShowPresenter @Inject constructor(val dao: PageDao) : Presenter<ShowViewCo
 
     override fun attachView(view: ShowViewContract) {
         this.view = view
-        dao.getAllItems().observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-                onNext = {
-                    val html = wrapper.format(12.0,"000000","FFFFFF",it.first().content, 20.0, 20.0, 1.0)
-                    view.displayHtml(html)
-                }
-        )
     }
 
     override fun handleIntent(intent: Intent) {
-
+        if (intent.hasExtra(Keys.INTENT_PAGE_ID)) {
+            val id: Long = intent.getLongExtra(Keys.INTENT_PAGE_ID, 0)
+            dao.getById(id).observeOn(AndroidSchedulers.mainThread()).subscribeBy(
+                    onNext = {
+                        val html = wrapper.format(12.0,"000000","FFFFFF",it.first().content, 20.0, 20.0, 1.0)
+                        view.displayHtml(html)
+                    }
+            )
+        }
     }
 
     override fun handleBackPress() {
